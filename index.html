@@ -324,7 +324,7 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="aulas-grid"></div>
 
       <div class="text-center mt-12 scroll-reveal">
-        <a href="#" class="inline-flex items-center gap-2 px-8 py-4 bg-slate-800/50 border border-slate-700 rounded-xl font-semibold text-slate-200 hover:bg-slate-800 hover:border-cyan-500/50 hover:text-white transition-all">
+        <a href="https://github.com/profaledev?tab=repositories" class="inline-flex items-center gap-2 px-8 py-4 bg-slate-800/50 border border-slate-700 rounded-xl font-semibold text-slate-200 hover:bg-slate-800 hover:border-cyan-500/50 hover:text-white transition-all" target="_blank" rel="noopener noreferrer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
           </svg>
@@ -348,58 +348,8 @@
         </p>
       </div>
       <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="alunos-grid"></div>
-
-      <!-- Botão + para abrir modal -->
-      <div class="text-center mt-12 scroll-reveal">
-        <button id="btn-add-aluno" class="inline-flex items-center justify-center gap-2 w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white text-3xl font-bold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-105">
-          +
-        </button>
-        <p class="text-slate-500 text-sm mt-2">Cadastrar aluno</p>
-      </div>
     </div>
   </section>
-
-  <!-- Modal Cadastro Aluno -->
-  <div id="modal-aluno" class="fixed inset-0 z-[60] hidden">
-    <div id="modal-aluno-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="absolute inset-0 flex items-center justify-center p-4">
-      <div class="relative w-full max-w-md bg-slate-900 border border-slate-700/50 rounded-2xl overflow-hidden shadow-2xl animate-modal-in">
-        <div class="flex items-center justify-between px-6 py-4 bg-slate-800/50 border-b border-slate-700">
-          <h3 class="text-lg font-bold">Novo Aluno</h3>
-          <button id="modal-aluno-close" class="p-1.5 text-slate-400 hover:text-white transition-colors" aria-label="Fechar">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <form id="form-aluno" action="https://formsubmit.co/profaledev@gmail.com" method="POST" class="p-6 space-y-4">
-          <input type="hidden" name="_subject" value="Novo cadastro de aluno - PWI">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="/#alunos">
-          <input type="hidden" name="repo" id="repo-hidden">
-          
-          <div>
-            <label class="block text-sm font-medium text-slate-300 mb-2">Nome completo</label>
-            <input type="text" name="nome" required
-              class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all"
-              placeholder="Ex: João Silva">
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-slate-300 mb-2">Username do GitHub</label>
-            <input type="text" name="github" id="github-input" required
-              class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all"
-              placeholder="Ex: HenriKihara728">
-            <p class="text-xs text-slate-500 mt-1">O link será: github.com/<span id="repo-preview" class="text-cyan-400">username</span>/exercicios-pw</p>
-          </div>
-          <button type="submit"
-            class="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold text-white hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/25">
-            Enviar cadastro
-          </button>
-        </form>
-        <p class="px-6 pb-6 text-center text-xs text-slate-500">Enviado por email. Após aprovação, aparece na lista.</p>
-      </div>
-    </div>
-  </div>
 
   <!-- Conteudo Section -->
   <section id="conteudo" class="relative py-24 px-6 bg-gradient-to-b from-slate-900 to-slate-950 scroll-mt-20">
