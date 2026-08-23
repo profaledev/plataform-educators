@@ -72,14 +72,14 @@ const aulas = [
     numero: "02",
     titulo: "Tags HTML e Semântica",
     descricao: "Principais tags HTML, atributos, semântica, headings, parágrafos, listas e links.",
-    youtube: "#",
+    youtube: "https://youtu.be/l-qQhcbvaMo",
     repo: "#"
   },
   {
     numero: "03",
     titulo: "Introdução ao CSS",
     descricao: "Seletores CSS, cores, fontes, margins, paddings, bordas e modelo de caixa (box model).",
-    youtube: "#",
+    youtube: "https://youtu.be/nL2F0rQzfZM",
     repo: "#"
   }
 ];
