@@ -38,7 +38,7 @@ const alunos = [
     repo: "https://github.com/gabimartins-dev/exercicios-pw"
   },
   {
-    nome: "	Henri",
+    nome: "Henri",
     github: "HenriKihara728",
     repo: "https://github.com/HenriKihara728/exercicios-pw"
   },
