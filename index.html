@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prof. Alessandro | PWI - Programação Web I</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen">
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div class="absolute inset-0 bg-grid"></div>
+
+    <div class="absolute top-20 left-10 w-72 h-72 bg-cyan-500/20 rounded-full blur-3xl float-animation" style="animation-delay: 0s;"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl float-animation" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-cyan-500/5 via-transparent to-violet-500/5 rounded-full blur-3xl"></div>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-30 px-6 py-4 md:py-5 transition-all duration-300">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center pulse-glow">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">PWI</span>
+        </div>
+        <div class="hidden md:flex items-center gap-1">
+          <a href="#disciplina" class="nav-link relative px-3 py-2 text-slate-300 hover:text-cyan-400 transition-colors font-medium">
+            Disciplina<span class="nav-indicator"></span>
+          </a>
+          <a href="#aulas" class="nav-link relative px-3 py-2 text-slate-300 hover:text-cyan-400 transition-colors font-medium">
+            Aulas<span class="nav-indicator"></span>
+          </a>
+          <a href="#alunos" class="nav-link relative px-3 py-2 text-slate-300 hover:text-cyan-400 transition-colors font-medium">
+            Alunos<span class="nav-indicator"></span>
+          </a>
+          <a href="#conteudo" class="nav-link relative px-3 py-2 text-slate-300 hover:text-cyan-400 transition-colors font-medium">
+            Conteudo<span class="nav-indicator"></span>
+          </a>
+          <a href="#professor" class="nav-link relative px-3 py-2 text-slate-300 hover:text-cyan-400 transition-colors font-medium">
+            Professor<span class="nav-indicator"></span>
+          </a>
+        </div>
+        <a href="#aulas" class="hidden md:inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold text-white hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/25">
+          Revisar Aulas
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <button id="menu-btn" class="md:hidden p-2 text-slate-300 hover:text-white transition-colors" aria-label="Abrir menu">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Sidebar -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/60 z-50 md:hidden invisible opacity-0 transition-all duration-300"></div>
+    <div id="menu-sidebar" class="fixed top-0 right-0 h-full w-72 bg-slate-900 border-l border-slate-800 z-50 md:hidden translate-x-full transition-transform duration-300 ease-in-out">
+      <div class="flex items-center justify-between p-6 border-b border-slate-800">
+        <span class="text-lg font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">PWI</span>
+        <button id="menu-close" class="p-2 text-slate-400 hover:text-white transition-colors" aria-label="Fechar menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex flex-col gap-1 p-6">
+        <a href="#disciplina" class="nav-link relative px-4 py-3 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 transition-all font-medium">
+          Disciplina<span class="nav-indicator"></span>
+        </a>
+        <a href="#aulas" class="nav-link relative px-4 py-3 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 transition-all font-medium">
+          Aulas<span class="nav-indicator"></span>
+        </a>
+        <a href="#alunos" class="nav-link relative px-4 py-3 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 transition-all font-medium">
+          Alunos<span class="nav-indicator"></span>
+        </a>
+        <a href="#conteudo" class="nav-link relative px-4 py-3 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 transition-all font-medium">
+          Conteudo<span class="nav-indicator"></span>
+        </a>
+        <a href="#professor" class="nav-link relative px-4 py-3 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 transition-all font-medium">
+          Professor<span class="nav-indicator"></span>
+        </a>
+        <div class="mt-4 pt-4 border-t border-slate-800">
+          <a href="#aulas" class="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold text-white hover:from-cyan-400 hover:to-blue-500 transition-all">
+            Revisar Aulas
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 px-6 py-20 max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <!-- Left Side - Text -->
+        <div class="text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-8 scroll-reveal" style="transition-delay: 100ms;">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+            </span>
+            <span class="text-cyan-300 text-sm font-medium">ETEC - 1º Semestre</span>
+          </div>
+
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-8 scroll-reveal" style="transition-delay: 200ms;">
+            Programação Web&nbsp;I
+            <br>
+            <span class="gradient-text">com Prof. Alessandro</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl lg:text-2xl text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-10 scroll-reveal" style="transition-delay: 300ms;">
+            Aprenda os fundamentos da web: HTML, CSS e JavaScript. Sua plataforma de revisão com aulas gravadas, código-fonte e exercícios práticos.
+          </p>
+
+          <!-- Stats -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 sm:gap-10 mb-12 scroll-reveal" style="transition-delay: 400ms;">
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-extrabold gradient-text">
+                <span id="aulas-count">0</span>
+              </div>
+              <div class="text-slate-400 text-sm mt-1">Aulas Gravadas</div>
+            </div>
+            <div class="w-px h-12 bg-gradient-to-t from-cyan-500 to-blue-500 hidden sm:block"></div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-extrabold gradient-text">3</div>
+              <div class="text-slate-400 text-sm mt-1">Pilares da Web</div>
+            </div>
+            <div class="w-px h-12 bg-gradient-to-t from-cyan-500 to-blue-500 hidden sm:block"></div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-extrabold gradient-text">100%</div>
+              <div class="text-slate-400 text-sm mt-1">Pratico</div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 scroll-reveal" style="transition-delay: 500ms;">
+            <a href="#aulas" class="group w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold text-white hover:from-cyan-400 hover:to-blue-500 transition-all shadow-xl shadow-cyan-500/30 flex items-center justify-center gap-2">
+              <span>Ver Aulas</span>
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+            <a href="#conteudo" class="w-full sm:w-auto px-8 py-4 bg-slate-800/50 border border-slate-700 rounded-xl font-semibold text-slate-200 hover:bg-slate-800 hover:border-cyan-500/50 hover:text-white transition-all flex items-center justify-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              <span>Ementa</span>
+            </a>
+          </div>
+
+          <!-- Tech Icons -->
+          <div class="mt-16 flex flex-wrap items-center justify-center lg:justify-start gap-6 scroll-reveal" style="transition-delay: 600ms;">
+            <span class="text-slate-500 text-sm">Tecnologias da disciplina:</span>
+            <div class="flex items-center gap-4 opacity-60 hover:opacity-100 transition-opacity">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-8 h-8" loading="lazy">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-8 h-8" loading="lazy">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-8 h-8" loading="lazy">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" class="w-8 h-8" loading="lazy">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-8 h-8" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side - Code Editor -->
+        <div class="relative scroll-reveal" style="transition-delay: 300ms;">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl blur-2xl pulse-glow"></div>
+
+            <div class="bg-slate-900/80 border border-slate-700/50 rounded-2xl overflow-hidden backdrop-blur-xl shadow-2xl">
+              <div class="flex items-center gap-2 px-4 py-3 bg-slate-800/50 border-b border-slate-700">
+                <div class="flex gap-1.5">
+                  <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div class="flex-1 text-center text-slate-500 text-sm font-medium">index.html</div>
+                <div class="w-3 h-3 rounded-full bg-slate-700"></div>
+              </div>
+
+              <pre class="p-6 overflow-x-auto text-sm leading-relaxed"><code class="text-slate-100"><span class="text-slate-500">&lt;!-- Aula 01: Introducao ao HTML --&gt;</span>
+                    <span class="text-cyan-400">&lt;!DOCTYPE html&gt;</span>
+                    <span class="text-cyan-400">&lt;html</span> <span class="text-yellow-300">lang</span><span class="text-cyan-400">=</span><span class="text-green-300">"pt-BR"</span><span class="text-cyan-400">&gt;</span>
+                    <span class="text-cyan-400">&lt;head&gt;</span>
+                      <span class="text-cyan-400">&lt;meta</span> <span class="text-yellow-300">charset</span><span class="text-cyan-400">=</span><span class="text-green-300">"UTF-8"</span><span class="text-cyan-400">&gt;</span>
+                      <span class="text-cyan-400">&lt;title&gt;</span>Minha Pagina<span class="text-cyan-400">&lt;/title&gt;</span>
+                      <span class="text-cyan-400">&lt;link</span> <span class="text-yellow-300">rel</span><span class="text-cyan-400">=</span><span class="text-green-300">"stylesheet"</span> <span class="text-yellow-300">href</span><span class="text-cyan-400">=</span><span class="text-green-300">"style.css"</span><span class="text-cyan-400">&gt;</span>
+                    <span class="text-cyan-400">&lt;/head&gt;</span>
+                    <span class="text-cyan-400">&lt;body&gt;</span>
+                      <span class="text-cyan-400">&lt;h1&gt;</span>Ola, Mundo!<span class="text-cyan-400">&lt;/h1&gt;</span>
+                      <span class="text-cyan-400">&lt;p&gt;</span>Primeira página web.<span class="text-cyan-400">&lt;/p&gt;</span>
+                      <span class="text-cyan-400">&lt;script</span> <span class="text-yellow-300">src</span><span class="text-cyan-400">=</span><span class="text-green-300">"script.js"</span><span class="text-cyan-400">&gt;&lt;/script&gt;</span>
+                    <span class="text-cyan-400">&lt;/body&gt;</span>
+                    <span class="text-cyan-400">&lt;/html&gt;</span></code>
+                </pre>
+            </div>
+
+            <!-- Floating Cards -->
+            <div class="absolute -top-6 -right-6 w-64 bg-slate-800/80 border border-slate-700/50 rounded-xl p-4 backdrop-blur-xl shadow-xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-white">Aulas no YouTube</p>
+                  <p class="text-xs text-slate-400">Assista quando e onde quiser</p>
+                </div>
+              </div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-full bg-gradient-to-r from-red-500 to-red-700 rounded-full"></div>
+              </div>
+            </div>
+
+            <div class="absolute bottom-8 -left-8 w-64 bg-slate-800/80 border border-slate-700/50 rounded-xl p-4 backdrop-blur-xl shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-300">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-600 to-slate-800 flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-white">Codigo no GitHub</p>
+                  <p class="text-xs text-slate-400">Repositorios das aulas</p>
+                </div>
+              </div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full w-full bg-gradient-to-r from-slate-500 to-slate-600 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 scroll-reveal" style="transition-delay: 800ms;">
+        <div class="flex flex-col items-center gap-2 text-slate-500">
+          <span class="text-xs uppercase tracking-wider">Role para ver as aulas</span>
+          <div class="w-6 h-10 border-2 border-slate-700 rounded-full flex justify-center pt-2">
+            <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disciplina Section -->
+  <section id="disciplina" class="relative py-24 px-6 bg-gradient-to-b from-slate-900 to-slate-950 scroll-mt-20">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 scroll-reveal">
+        <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Sobre a Disciplina</span>
+        <h2 class="text-4xl sm:text-5xl font-extrabold mt-4">
+          Programação Web&nbsp;I
+          <span class="gradient-text">PWI</span>
+        </h2>
+        <p class="text-slate-400 text-lg max-w-3xl mx-auto mt-6 leading-relaxed">
+          Disciplina do 1 semestre do curso de Desenvolvimento de Sistemas da ETEC.
+          Aqui voce aprende do zero a criar páginas web estaticas utilizando HTML para
+          estruturação, CSS para estilização e JavaScript para interatividade.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8 hover:border-cyan-500/50 transition-all scroll-reveal">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">HTML5</h3>
+          <p class="text-slate-400">Estruturação semântica de páginas, formulários, tabelas, multimídia e boas práticas de acessibilidade.</p>
+        </div>
+
+        <div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8 hover:border-cyan-500/50 transition-all scroll-reveal" style="transition-delay: 100ms;">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">CSS3</h3>
+          <p class="text-slate-400">Estilização com seletores, flexbox, grid, responsividade, animações e design moderno.</p>
+        </div>
+
+        <div class="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-8 hover:border-cyan-500/50 transition-all scroll-reveal" style="transition-delay: 200ms;">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">JavaScript</h3>
+          <p class="text-slate-400">Lógica de programação, manipulação do DOM, eventos, funções e introdução a ES6+.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aulas Section -->
+  <section id="aulas" class="relative py-24 px-6 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 scroll-mt-20">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 scroll-reveal">
+        <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Plataforma de Revisao</span>
+        <h2 class="text-4xl sm:text-5xl font-extrabold mt-4">
+          <span class="gradient-text">Aulas</span> da Disciplina
+        </h2>
+        <p class="text-slate-400 text-lg max-w-3xl mx-auto mt-6 leading-relaxed">
+          Assista a aula gravada no YouTube e acesse o repositório no GitHub com
+          todo o código-fonte e exercícios práticos.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="aulas-grid"></div>
+
+      <div class="text-center mt-12 scroll-reveal">
+        <a href="#" class="inline-flex items-center gap-2 px-8 py-4 bg-slate-800/50 border border-slate-700 rounded-xl font-semibold text-slate-200 hover:bg-slate-800 hover:border-cyan-500/50 hover:text-white transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+          Ver todos os repositórios no GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alunos Section -->
+  <section id="alunos" class="relative py-24 px-6 bg-gradient-to-b from-slate-900 to-slate-950 scroll-mt-20">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 scroll-reveal">
+        <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Turma</span>
+        <h2 class="text-4xl sm:text-5xl font-extrabold mt-4">
+          <span class="gradient-text">Alunos</span> da Disciplina
+        </h2>
+        <p class="text-slate-400 text-lg max-w-3xl mx-auto mt-6 leading-relaxed">
+          Repositorios de exercícios dos alunos. Clique no card para acessar o GitHub
+          e veja o repositório com os exercícios práticos de cada um.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="alunos-grid"></div>
+
+      <!-- Botão + para abrir modal -->
+      <div class="text-center mt-12 scroll-reveal">
+        <button id="btn-add-aluno" class="inline-flex items-center justify-center gap-2 w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white text-3xl font-bold hover:from-cyan-400 hover:to-blue-500 transition-all shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-105">
+          +
+        </button>
+        <p class="text-slate-500 text-sm mt-2">Cadastrar aluno</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Cadastro Aluno -->
+  <div id="modal-aluno" class="fixed inset-0 z-[60] hidden">
+    <div id="modal-aluno-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="relative w-full max-w-md bg-slate-900 border border-slate-700/50 rounded-2xl overflow-hidden shadow-2xl animate-modal-in">
+        <div class="flex items-center justify-between px-6 py-4 bg-slate-800/50 border-b border-slate-700">
+          <h3 class="text-lg font-bold">Novo Aluno</h3>
+          <button id="modal-aluno-close" class="p-1.5 text-slate-400 hover:text-white transition-colors" aria-label="Fechar">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <form id="form-aluno" action="https://formsubmit.co/profaledev@gmail.com" method="POST" class="p-6 space-y-4">
+          <input type="hidden" name="_subject" value="Novo cadastro de aluno - PWI">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="/#alunos">
+          <input type="hidden" name="repo" id="repo-hidden">
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Nome completo</label>
+            <input type="text" name="nome" required
+              class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all"
+              placeholder="Ex: João Silva">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Username do GitHub</label>
+            <input type="text" name="github" id="github-input" required
+              class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all"
+              placeholder="Ex: HenriKihara728">
+            <p class="text-xs text-slate-500 mt-1">O link será: github.com/<span id="repo-preview" class="text-cyan-400">username</span>/exercicios-pw</p>
+          </div>
+          <button type="submit"
+            class="w-full px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold text-white hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/25">
+            Enviar cadastro
+          </button>
+        </form>
+        <p class="px-6 pb-6 text-center text-xs text-slate-500">Enviado por email. Após aprovação, aparece na lista.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteudo Section -->
+  <section id="conteudo" class="relative py-24 px-6 bg-gradient-to-b from-slate-900 to-slate-950 scroll-mt-20">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 scroll-reveal">
+        <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Ementa</span>
+        <h2 class="text-4xl sm:text-5xl font-extrabold mt-4">
+          Conteudo <span class="gradient-text">Programatico</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-slate-800/30 border border-slate-700/50 rounded-xl p-6 scroll-reveal">
+          <h3 class="text-lg font-bold text-cyan-400 mb-4">Unidade I - Fundamentos</h3>
+          <ul class="space-y-3 text-slate-300">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-cyan-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Historia e funcionamento da web
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-cyan-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Estrutura basica do HTML
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-cyan-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Tags semânticas HTML5
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-cyan-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Formularios e inputs
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-800/30 border border-slate-700/50 rounded-xl p-6 scroll-reveal" style="transition-delay: 100ms;">
+          <h3 class="text-lg font-bold text-blue-400 mb-4">Unidade II - Estilização</h3>
+          <ul class="space-y-3 text-slate-300">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Seletores e propriedades CSS
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Box model e layout
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Flexbox e Grid
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-blue-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Design responsivo
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-800/30 border border-slate-700/50 rounded-xl p-6 scroll-reveal" style="transition-delay: 200ms;">
+          <h3 class="text-lg font-bold text-yellow-400 mb-4">Unidade III - Interatividade</h3>
+          <ul class="space-y-3 text-slate-300">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-yellow-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Variaveis, tipos e operadores
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-yellow-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Estruturas de controle
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-yellow-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Funções e eventos
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-yellow-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Manipulação do DOM
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-800/30 border border-slate-700/50 rounded-xl p-6 scroll-reveal" style="transition-delay: 300ms;">
+          <h3 class="text-lg font-bold text-purple-400 mb-4">Unidade IV - Projeto Final</h3>
+          <ul class="space-y-3 text-slate-300">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-purple-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Planejamento de página web
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-purple-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Integração HTML + CSS + JS
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-purple-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Publicação com GitHub Pages
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-purple-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Apresentação dos projetos
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-2 mt-10 text-slate-500 text-sm scroll-reveal">
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Este e um resumo do conteudo principal. A ementa completa com todos os tópicos está na documentação oficial do curso.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professor Section -->
+  <section id="professor" class="relative py-24 px-6 bg-gradient-to-b from-slate-900 to-slate-950 scroll-mt-20">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="scroll-reveal">
+          <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Professor</span>
+          <h2 class="text-4xl sm:text-5xl font-extrabold mt-4 mb-6">
+            Alessandro
+            <span class="gradient-text">Vitório</span>
+          </h2>
+          <p class="text-slate-300 text-lg leading-relaxed mb-6">
+            Professor de Desenvolvimento Web na ETEC, apaixonado por tecnologia e educação.
+            Acredita que ensinar e a melhor forma de aprender e que a prática constante
+            e o caminho para formar profissionais completos.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="https://github.com" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-slate-300 hover:border-cyan-500/50 hover:text-white transition-all">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              GitHub
+            </a>
+            <a href="https://youtube.com" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-slate-300 hover:border-red-500/50 hover:text-white transition-all">
+              <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
+              </svg>
+              YouTube
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="flex items-center gap-2 px-5 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-slate-300 hover:border-blue-500/50 hover:text-white transition-all">
+              <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z" />
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+        <div class="relative scroll-reveal" style="transition-delay: 200ms;">
+          <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl blur-2xl pulse-glow"></div>
+          <div class="relative bg-slate-800/50 border border-slate-700/50 rounded-2xl p-8 backdrop-blur-xl overflow-visible">
+            <div class="flex items-center gap-2 text-slate-500 text-sm mb-6">
+              <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Disponível para dúvidas
+            </div>
+            <blockquote class="text-slate-300 text-lg leading-relaxed italic text-center">
+              "Ensinar programação web e dar aos alunos as ferramentas para construir
+              o futuro. Cada linha de código é uma descoberta, cada projeto um passo
+              rumo ao profissional que eles serão."
+            </blockquote>
+            <div class="mt-6 pt-6 border-t border-slate-700 text-center">
+              <p class="text-sm font-medium text-slate-300">Prof. Alessandro Vitório</p>
+              <p class="text-sm text-slate-500">Programação Web I - 1º Semestre</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative py-8 px-6 border-t border-slate-800 bg-slate-950">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        </div>
+        <span class="text-slate-400 text-sm">PWI | Prof. Alessandro</span>
+      </div>
+      <p class="text-slate-600 text-sm">ETEC - Programação Web I - 1º Semestre</p>
+    </div>
+  </footer>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="fixed inset-0 z-[60] hidden">
+    <div id="video-overlay" class="absolute inset-0 bg-black/80"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="relative w-full max-w-4xl bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50">
+        <div class="flex items-center justify-between px-4 py-3 bg-slate-800/50 border-b border-slate-700">
+          <span class="text-sm font-medium text-slate-300" id="video-title">Assistir Aula</span>
+          <button id="video-close" class="p-1.5 text-slate-400 hover:text-white transition-colors" aria-label="Fechar video">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="relative aspect-video bg-slate-800">
+          <iframe id="video-player" class="absolute inset-0 w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen onerror="handleVideoError()"></iframe>
+<div id="video-error" class="hidden absolute inset-0 flex flex-col items-center justify-center p-8 bg-slate-900/95 text-center">
+            <div class="w-20 h-20 rounded-full bg-red-500/20 flex items-center justify-center mb-5">
+              <svg class="w-10 h-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-2">Vídeo restrito</h3>
+            <p class="text-slate-400 mb-3 max-w-md">Este vídeo <strong>não permite incorporação</strong> (configuração do canal no YouTube).</p>
+            <p class="text-slate-500 text-sm mb-6 max-w-md">Clique no botão abaixo para assistir direto no YouTube.</p>
+            <a id="video-error-link" href="#" target="_blank" class="inline-flex items-center gap-2 px-7 py-3.5 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-500 transition-colors shadow-lg shadow-red-500/25">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 9 4.03 9 9z" />
+              </svg>
+              Abrir no YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
