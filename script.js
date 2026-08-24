@@ -66,21 +66,21 @@ const aulas = [
     titulo: "Introdução a Web e HTML",
     descricao: "História da web, como funciona a internet, estrutura básica de um documento HTML.",
     youtube: "https://youtu.be/pACre92tTsA",
-    repo: "#"
+    repo: "https://github.com/profaledev/doc-html-tags-atrib-conteudo"
   },
   {
     numero: "02",
     titulo: "Tags HTML e Semântica",
     descricao: "Principais tags HTML, atributos, semântica, headings, parágrafos, listas e links.",
     youtube: "https://youtu.be/l-qQhcbvaMo",
-    repo: "#"
+    repo: "https://github.com/alessandrovitorio/links-form-img"
   },
   {
     numero: "03",
     titulo: "Introdução ao CSS",
     descricao: "Seletores CSS, cores, fontes, margins, paddings, bordas e modelo de caixa (box model).",
     youtube: "https://youtu.be/nL2F0rQzfZM",
-    repo: "#"
+    repo: "https://github.com/profaledev/css-regra-atributo-seletores"
   }
 ];
 
