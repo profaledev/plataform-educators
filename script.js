@@ -333,32 +333,83 @@ function initAlunoModal() {
   const modal = document.getElementById('modal-aluno');
   const overlay = document.getElementById('modal-aluno-overlay');
   const close = document.getElementById('modal-aluno-close');
+  const cancelBtn = document.getElementById('modal-aluno-cancel');
   const btnAbrir = document.getElementById('btn-add-aluno');
-  const githubInput = document.getElementById('github-input');
-  const repoHidden = document.getElementById('repo-hidden');
-  const repoPreview = document.getElementById('repo-preview');
-  if (!modal || !overlay || !close || !btnAbrir || !githubInput || !repoHidden || !repoPreview) return;
+  const form = document.getElementById('modal-aluno-form');
+  const nomeInput = document.getElementById('modal-nome-input');
+  const githubInput = document.getElementById('modal-github-input');
+  const repoHidden = document.getElementById('modal-repo-hidden');
+  const repoPreview = document.getElementById('modal-repo-preview');
+
+  if (!modal || !overlay || !close || !cancelBtn || !btnAbrir || !form || !nomeInput || !githubInput || !repoHidden || !repoPreview) return;
 
   function atualizarRepo() {
     const username = githubInput.value.trim();
-    repoHidden.value = username ? `https://github.com/${username}/exercicios-pw` : '';
-    repoPreview.textContent = username || 'username';
+    const repoUrl = username ? `https://github.com/${username}/exercicios-pw` : '';
+    repoHidden.value = repoUrl;
+    repoPreview.textContent = username ? `github.com/${username}/exercicios-pw` : 'github.com/seu-usuario/exercicios-pw';
   }
 
   function abrir() {
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+    nomeInput.focus();
   }
 
   function fechar() {
     modal.classList.add('hidden');
     document.body.style.overflow = '';
+    form.reset();
+    atualizarRepo();
   }
 
   btnAbrir.addEventListener('click', abrir);
   close.addEventListener('click', fechar);
+  cancelBtn.addEventListener('click', fechar);
   overlay.addEventListener('click', fechar);
   githubInput.addEventListener('input', atualizarRepo);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nome = nomeInput.value.trim();
+    const github = githubInput.value.trim();
+    const repo = repoHidden.value;
+
+    if (!nome || !github) {
+      alert('Por favor, preencha todos os campos.');
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg> Enviando...';
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        alert('Cadastro enviado com sucesso! Verifique seu email.');
+        fechar();
+      } else {
+        throw new Error('Erro ao enviar');
+      }
+    } catch (err) {
+      alert('Erro ao enviar. Tente novamente.');
+      console.error(err);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
+  });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') fechar();
